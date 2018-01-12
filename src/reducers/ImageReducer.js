@@ -1,10 +1,20 @@
+import { imageUrlBase } from '../utils/Constants';
 import {
     FETCHING_IMAGES
 } from '../actions/Types';
 
 const initialState = {
-    images: []
+    data: {
+        BTC: {
+            ImageUrl: "/media/19633/btc.png"
+        }
+    }
 };
+
+export function getImageUrl(state, currency) {
+    const imageUrl = state[currency].ImageUrl;
+    return `${imageUrlBase}${imageUrl}`;
+}
 
 export default function(state = initialState, action) {
     switch(action.type) {

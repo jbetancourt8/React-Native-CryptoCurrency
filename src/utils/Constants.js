@@ -1,3 +1,5 @@
 export const apiBaseURL = 'https://api.coinmarketcap.com';
 
-export const apiBaseURL2 = 'https://www.cryptocompare.com/api/data/coinlist/';
+export const apiImageUrl = 'https://www.cryptocompare.com/api/data/coinlist/';
+
+export const imageUrlBase = 'https://www.cryptocompare.com';

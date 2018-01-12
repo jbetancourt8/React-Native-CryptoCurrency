@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { SafeAreaView, Text, FlatList, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
-import FetchCoinData from '../actions/FetchCoinData';
-import FetchImages from '../actions/FetchImages';
+import { FetchAllCoinData } from '../actions/FetchCoinData';
 import Coin from '../components/Coin';
 
 const styles = {
@@ -14,7 +13,7 @@ const styles = {
 
 class HomeScreen extends Component {
     componentWillMount() {
-        this.props.FetchCoinData();
+        this.props.FetchAllCoinData();
     }
 
     _renderItem = ({item}) => (
@@ -57,4 +56,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { FetchCoinData })(HomeScreen);
+export default connect(mapStateToProps, { FetchAllCoinData })(HomeScreen);

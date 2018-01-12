@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
 const styles = {
     container: {
@@ -64,15 +64,17 @@ const styles = {
 
 class Coin extends Component {
     render() {
+        const { item } = this.props;
+        const { image_url, price_usd, name, symbol } = item;
         return (
             <View style={styles.container}>
 
                 <View style={styles.upperRow}>
-                    
-                    <Text style={styles.coinSymbol}>{this.props.item.symbol}</Text>
+                    <Image source={image_url} />
+                    <Text style={styles.coinSymbol}>{symbol}</Text>
                     <Text style={styles.seperator}>|</Text>
-                    <Text style={styles.coinName}>{this.props.item.name}</Text>
-                    <Text style={styles.coinPrice}>{this.props.item.price_usd}
+                    <Text style={styles.coinName}>{name}</Text>
+                    <Text style={styles.coinPrice}>{price_usd}
                         <Text style={styles.moneySymbol}> USD </Text>
                     </Text>
                 </View>
