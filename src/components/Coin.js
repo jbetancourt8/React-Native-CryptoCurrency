@@ -4,28 +4,25 @@ import { Image, Text, View } from 'react-native';
 const styles = {
     container: {
         display: "flex",
-        marginBottom: 20,
         borderBottomColor: "#e5e5e5",
         borderBottomWidth: 1,
-        padding: 20
     },
     upperRow: {
+        backgroundColor: "white",
         display: "flex",
         flexDirection: "row",
-        marginBottom: 15
+        padding: 10
     },
     coinSymbol: {
         marginTop: 10,
         marginLeft: 20,
         marginRight: 5,
-        fontWeight: "bold",   
-        color: 'white'     
+        fontWeight: "bold"
     },
     coinName: {
         marginTop: 10,
         marginLeft: 5,
-        marginRight: 20,
-        color: 'white'  
+        marginRight: 20
     },
     seperator: {
         marginTop: 10,
@@ -35,14 +32,12 @@ const styles = {
         marginTop: 10,
         marginLeft: "auto",
         marginRight: 10,
-        fontWeight: "bold",   
-        color: 'white'       
+        fontWeight: "bold"
     },
     moneySymbol: {
-        fontWeight: "bold",
-        color: 'white'  
+        fontWeight: "bold"
     },
-    statisticsContainer: {
+    lowerRow: {
         display: "flex",
         borderTopColor: "#FAFAFA",
         borderTopWidth: 1,
@@ -77,7 +72,7 @@ const Coin = ({ item }) => {
                 </Text>
             </View>
 
-            <View style={styles.statisticsContainer}>
+            <View style={styles.lowerRow}>
 
                 <Text style={{color: 'white'}}>24h:
                     <Text style={item.percent_change_24h < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {item.percent_change_24h} % </Text>
