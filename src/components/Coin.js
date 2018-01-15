@@ -62,37 +62,34 @@ const styles = {
     }
 };
 
-class Coin extends Component {
-    render() {
-        const { item } = this.props;
-        const { image_url, price_usd, name, symbol } = item;
-        return (
-            <View style={styles.container}>
+const Coin = ({ item }) => {
+    const { image_url, price_usd, name, symbol } = item;
+    return (
+        <View style={styles.container}>
 
-                <View style={styles.upperRow}>
-                    <Image source={image_url} />
-                    <Text style={styles.coinSymbol}>{symbol}</Text>
-                    <Text style={styles.seperator}>|</Text>
-                    <Text style={styles.coinName}>{name}</Text>
-                    <Text style={styles.coinPrice}>{price_usd}
-                        <Text style={styles.moneySymbol}> USD </Text>
-                    </Text>
-                </View>
+            <View style={styles.upperRow}>
+                <Image style={{ width: 40 }} source={{ uri: image_url }} />
+                <Text style={styles.coinSymbol}>{symbol}</Text>
+                <Text style={styles.seperator}>|</Text>
+                <Text style={styles.coinName}>{name}</Text>
+                <Text style={styles.coinPrice}>{price_usd}
+                    <Text style={styles.moneySymbol}> USD </Text>
+                </Text>
+            </View>
 
-                <View style={styles.statisticsContainer}>
+            <View style={styles.statisticsContainer}>
 
-                    <Text style={{color: 'white'}}>24h:
-                        <Text style={this.props.item.percent_change_24h < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {this.props.item.percent_change_24h} % </Text>
-                    </Text>
-                    <Text style={{color: 'white'}}>7d:
-                        <Text style={this.props.item.percent_change_7d < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {this.props.item.percent_change_7d} % </Text>
-                    </Text>
+                <Text style={{color: 'white'}}>24h:
+                    <Text style={item.percent_change_24h < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {item.percent_change_24h} % </Text>
+                </Text>
+                <Text style={{color: 'white'}}>7d:
+                    <Text style={item.percent_change_7d < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {item.percent_change_7d} % </Text>
+                </Text>
 
-                </View>
+            </View>
 
-            </View> 
-        );
-    }   
-}
+        </View> 
+    );
+};
 
 export default Coin;

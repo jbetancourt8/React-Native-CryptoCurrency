@@ -11,8 +11,7 @@ export function FetchAllCoinData() {
     return dispatch => {
         dispatch({ type: FETCHING_COIN_DATA, payload: {} });
 
-        axios.get(`${apiBaseURL}/v1/ticker/`)
-        .then(res => {
+        axios.get(`${apiBaseURL}/v1/ticker/`).then(res => {
             return dispatch({ type: FETCHING_COIN_DATA_SUCCESS, payload: res.data });                
         })
         .catch(err => {

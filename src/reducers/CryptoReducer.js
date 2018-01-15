@@ -19,7 +19,8 @@ const emptyState = {
 }
 
 function getImageUrl(images, symbol) {
-    const imageUrl = images[symbol].imageUrl;
+    const imageData = images[symbol] || {};
+    const { imageUrl } = imageData;
     return `${imageUrlBase}${imageUrl}`;
 }
 
@@ -28,7 +29,6 @@ function stateWithCoinImages(state, payload) {
         const image_url = getImageUrl(state.images, currency.symbol);
         return { ...currency, image_url };
     });
-    console.log('stateWithCoinImages: data: ', data);
     return Object.assign({}, state, {
         isFetching: false,
         data,
@@ -49,8 +49,6 @@ function initStateWithImages(state, coinData) {
 }
 
 const initialState = initStateWithImages(emptyState, coinimages);
-
-console.log('initialState: ', initialState);
 
 export default function(state = initialState, action) {
     switch(action.type) {
