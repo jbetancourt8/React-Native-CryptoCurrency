@@ -1,3 +1,4 @@
+import { map, reduce, values } from 'lodash';
 import {
     FETCHING_COIN_DATA,
     FETCHING_COIN_DATA_SUCCESS,
@@ -5,33 +6,51 @@ import {
     FETCHING_IMAGES_SUCCESS,
 } from '../actions/Types';
 
-const initialState = {
+import { imageUrlBase } from '../utils/Constants';
+
+import coinimages from '../utils/coinimages';
+
+const emptyState = {
     isFetching: null,
     data: [],
     hasError: false,
     errorMessage: null,
-    images: []
+    images: {}
 }
 
-function getImageUrl(state, currency) {
-    const imageUrl = state[currency].ImageUrl;
+function getImageUrl(images, symbol) {
+    const imageUrl = images[symbol].imageUrl;
     return `${imageUrlBase}${imageUrl}`;
 }
 
 function stateWithCoinImages(state, payload) {
-    const data = payload.map(currency => {
-        return Object.assign({}, currency, {
-            image_url: getImageUrl(state.images, currency.symbol)
-        })
-    }); 
+    const data = map(payload, currency => {
+        const image_url = getImageUrl(state.images, currency.symbol);
+        return { ...currency, image_url };
+    });
+    console.log('stateWithCoinImages: data: ', data);
     return Object.assign({}, state, {
         isFetching: false,
         data,
         hasError: false,
         errorMessage: null
     });
-
 }
+
+function initStateWithImages(state, coinData) {
+    const data = coinData.Data;
+    const images = reduce(values(data), (result, value) => {
+        const key = value.Symbol;
+        const imageUrl = value.ImageUrl;
+        result[key] = { imageUrl };
+        return result;
+    }, {});
+    return { ...state, images };
+}
+
+const initialState = initStateWithImages(emptyState, coinimages);
+
+console.log('initialState: ', initialState);
 
 export default function(state = initialState, action) {
     switch(action.type) {
