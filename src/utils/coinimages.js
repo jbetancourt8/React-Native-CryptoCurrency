@@ -15009,12 +15009,12 @@ const coinData = {
 			"SortOrder": "956",
 			"Sponsored": false
 		},
-		"BCCOIN": {
+		"BCC": {
 			"Id": "35165",
 			"Url": "/coins/bccoin/overview",
 			"ImageUrl": "/media/9350709/bccoin1.png",
 			"Name": "BCCOIN",
-			"Symbol": "BCCOIN",
+			"Symbol": "BCC",
 			"CoinName": "BitConnect Coin",
 			"FullName": "BitConnect Coin (BCCOIN)",
 			"Algorithm": "Scrypt",
@@ -19395,12 +19395,12 @@ const coinData = {
 			"SortOrder": "1246",
 			"Sponsored": false
 		},
-		"IOT": {
+		"MIOTA": {
 			"Id": "127356",
 			"Url": "/coins/iot/overview",
 			"ImageUrl": "/media/1383540/iota_logo.png",
 			"Name": "IOT",
-			"Symbol": "IOT",
+			"Symbol": "MIOTA",
 			"CoinName": "IOTA",
 			"FullName": "IOTA (IOT)",
 			"Algorithm": "N/A",
@@ -19752,12 +19752,12 @@ const coinData = {
 			"SortOrder": "1267",
 			"Sponsored": false
 		},
-		"BQX": {
+		"ETHOS": {
 			"Id": "141464",
 			"Url": "/coins/ethos/overview",
 			"ImageUrl": "/media/16404851/ethos.png",
 			"Name": "ETHOS",
-			"Symbol": "BQX",
+			"Symbol": "ETHOS",
 			"CoinName": "Ethos",
 			"FullName": "Ethos (ETHOS)",
 			"Algorithm": "N/A",

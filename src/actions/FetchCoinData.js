@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { apiBaseURL } from '../utils/Constants';
+import { apiBaseURL } from '../utils/constants';
 import {
     FETCHING_COIN_DATA,
     FETCHING_COIN_DATA_SUCCESS,
     FETCHING_COIN_DATA_FAIL,
     FETCHING_IMAGES_SUCCESS,
-} from './Types';
+} from './types';
 
 export function FetchAllCoinData() {
     return dispatch => {

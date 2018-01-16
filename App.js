@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import { Provider } from 'react-redux';
-import Store from './src/utils/Store';
-import { HomeScreen } from './src';
+import Navigator from './src/utils/routes';
+import Store from './src/utils/store';
 
 
-export default class App extends Component {
-  render() {
-    return (
-      <Provider store={Store}>
-        <View style={{ flex: 1, backgroundColor: '#393939'}}>
-          <HomeScreen />
-        </View>
-      </Provider>
-    );
-  }
-}
+export default App = () => (
+  <Provider store={Store}>
+    <Navigator onNavigationStateChange={null} />
+  </Provider>
+);

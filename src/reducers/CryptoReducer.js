@@ -4,10 +4,8 @@ import {
     FETCHING_COIN_DATA_SUCCESS,
     FETCHING_COIN_DATA_FAIL,
     FETCHING_IMAGES_SUCCESS,
-} from '../actions/Types';
-
-import { imageUrlBase } from '../utils/Constants';
-
+} from '../actions/types';
+import { imageUrlBase } from '../utils/constants';
 import coinimages from '../utils/coinimages';
 
 const emptyState = {
