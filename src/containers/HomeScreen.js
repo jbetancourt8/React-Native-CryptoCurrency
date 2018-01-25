@@ -60,8 +60,6 @@ class HomeScreen extends Component {
         });
 
         this.props.FilterCoinData(text);
-
-        console.log(filteredList)
     }
 
     renderHeader = () => {
@@ -74,6 +72,7 @@ class HomeScreen extends Component {
                 autoCorrect={false}
                 autoCapitalize='none'
                 returnKeyType='search'
+                clearButtonMode='while-editing'
             />
         );
     }

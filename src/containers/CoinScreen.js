@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { Image, Text, View } from 'react-native';
+import CoinRow from '../components/coinRow';
 
 const styles = {
     container: {
         flex: 1, 
         backgroundColor: '#393939',
-        alignItems: 'center',
         paddingTop: 4
     },
     coinBorder: {
+        width: 70,
         borderRadius: 35, 
         backgroundColor: 'white', 
         borderColor: 'white', 
-        borderWidth: 1
+        borderWidth: 1,
+        alignSelf: 'center'
     },
     coinImage: {
         width: 70,
@@ -24,22 +26,8 @@ const styles = {
         fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
-        paddingTop: 5
-    },
-    coinData: {
-        fontSize: 20, 
-        color: 'white',
-        paddingVertical: 2
-    },
-    percentChangePlus: {
-        color: "#00BFA5",
-        fontWeight: "bold",
-        marginLeft: 5
-    },
-    percentChangeMinus: {
-        color: "#DD2C00",
-        fontWeight: "bold",
-        marginLeft: 5
+        paddingTop: 5,
+        textAlign: 'center'
     }
 };
 
@@ -70,21 +58,8 @@ class CoinScreen extends Component {
                 </View>
 
                 <Text style={styles.coinName}>{name} | {symbol}</Text>
-                <Text style={styles.coinData}>{price_usd} USD</Text>
-                <Text style={styles.coinData}>{price_btc} BTC</Text>
-                <Text style={styles.coinData}>7d:
-                    <Text style={percent_change_7d < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {percent_change_7d} % </Text>
-                </Text>
-                <Text style={styles.coinData}>24h:
-                    <Text style={percent_change_24h < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {percent_change_24h} % </Text>
-                </Text>
-                <Text style={styles.coinData}>1h:
-                    <Text style={percent_change_1h < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {percent_change_1h} % </Text>
-                </Text>
-                <Text style={styles.coinData}>Available Supply: {available_supply}</Text>
-                <Text style={styles.coinData}>Max Cap: {market_cap_usd} USD</Text>
-                <Text style={styles.coinData}>Max Supply: {max_supply}</Text>
-                <Text style={styles.coinData}>Last Updated: {dateString}</Text>
+
+                <CoinRow data={this.props.navigation.state.params} dateString={dateString}/>
 
             </View>
         );

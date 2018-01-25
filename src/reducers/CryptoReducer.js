@@ -1,4 +1,4 @@
-import { map, reduce, values } from 'lodash';
+import { curry, filter, isEmpty, isString, lowerCase, map, reduce, trim, values } from 'lodash';
 import {
     FETCHING_COIN_DATA,
     FETCHING_COIN_DATA_SUCCESS,
@@ -31,6 +31,7 @@ function stateWithCoinImages(state, payload) {
     return Object.assign({}, state, {
         isFetching: false,
         data,
+        allItems: data,
         hasError: false,
         errorMessage: null
     });
@@ -48,6 +49,25 @@ function initStateWithImages(state, coinData) {
 }
 
 const initialState = initStateWithImages(emptyState, coinimages);
+
+const matches = curry((pattern, row) => {
+    if (isEmpty(pattern) || !isString(pattern)) {
+      return true;
+    }
+    return lowerCase(row).indexOf(lowerCase(trim(pattern))) >= 0;
+});
+
+const filterRows = (state, pattern) => {
+    if (isEmpty(trim(pattern))) {
+      return Object.assign({}, state, {data: state.allItems});
+    }
+    const input = lowerCase(trim(pattern));
+    const rowMatches = matches(input);
+    const filteredList = filter(state.data,
+      row => rowMatches(lowerCase(row.name)) || rowMatches(lowerCase(row.symbol))
+    );
+    return Object.assign({}, state, { data: filteredList });
+}
 
 export default function(state = initialState, action) {
     switch(action.type) {
@@ -74,13 +94,7 @@ export default function(state = initialState, action) {
             return Object.assign({}, state, { images: payload.Data })
 
         case FILTER_DATA:
-            let input = action.payload.toLowerCase();
-            let { data } = state;
-            
-            let filteredList = data.filter((data) => {
-                return data.name.toLowerCase().match(input)
-            });;
-            return Object.assign({}, state, { data: filteredList });
+            return filterRows(state, action.payload);
 
         default:
             return state;
