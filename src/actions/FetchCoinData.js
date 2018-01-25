@@ -5,6 +5,7 @@ import {
     FETCHING_COIN_DATA_SUCCESS,
     FETCHING_COIN_DATA_FAIL,
     FETCHING_IMAGES_SUCCESS,
+    FILTER_DATA
 } from './types';
 
 export function FetchAllCoinData() {
@@ -18,4 +19,10 @@ export function FetchAllCoinData() {
             return dispatch({ type: FETCHING_COIN_DATA_FAIL, payload: err });
         });
     };
+}
+
+export function FilterCoinData(text) {
+    return dispatch => {
+        dispatch({ type: FILTER_DATA, payload: text })
+    }
 }

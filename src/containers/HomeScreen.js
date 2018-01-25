@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, SafeAreaView, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { FetchAllCoinData } from '../actions/fetchCoinData';
+import { FetchAllCoinData, FilterCoinData } from '../actions/fetchCoinData';
 import Coin from '../components/coin';
 
 const styles = {
@@ -27,7 +27,7 @@ class HomeScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            refresh: false,
+            refresh: false
         };
     }
 
@@ -52,7 +52,16 @@ class HomeScreen extends Component {
     }
 
     searchData = (text) => {
-        console.log(text)
+        const { data } = this.props.crypto;
+        let input = text.toLowerCase();
+
+        let filteredList = data.filter((data) => {
+            return data.name.toLowerCase().match(input)
+        });
+
+        this.props.FilterCoinData(text);
+
+        console.log(filteredList)
     }
 
     renderHeader = () => {
@@ -106,4 +115,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { FetchAllCoinData })(HomeScreen);
+export default connect(mapStateToProps, { FetchAllCoinData, FilterCoinData })(HomeScreen);

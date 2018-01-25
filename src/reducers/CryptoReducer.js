@@ -4,6 +4,7 @@ import {
     FETCHING_COIN_DATA_SUCCESS,
     FETCHING_COIN_DATA_FAIL,
     FETCHING_IMAGES_SUCCESS,
+    FILTER_DATA
 } from '../actions/types';
 import { imageUrlBase } from '../utils/constants';
 import coinimages from '../utils/coinimages';
@@ -68,8 +69,19 @@ export default function(state = initialState, action) {
                 hasError: true,
                 errorMessage: action.err
             });
+
         case FETCHING_IMAGES_SUCCESS:
             return Object.assign({}, state, { images: payload.Data })
+
+        case FILTER_DATA:
+            let input = action.payload.toLowerCase();
+            let { data } = state;
+            
+            let filteredList = data.filter((data) => {
+                return data.name.toLowerCase().match(input)
+            });;
+            return Object.assign({}, state, { data: filteredList });
+
         default:
             return state;
     }   
