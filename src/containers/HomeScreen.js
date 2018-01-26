@@ -19,7 +19,8 @@ const styles = {
         borderRadius: 15,
         color: 'white',
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginBottom: 20
     }
 }
 
