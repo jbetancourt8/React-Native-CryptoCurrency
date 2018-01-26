@@ -1,3 +1,3 @@
-import HomeScreen from './screens/HomeScreen.js';
+import HomeScreen from './container/HomeScreen.js';
 
 export { HomeScreen };
